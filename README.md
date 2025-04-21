@@ -71,17 +71,16 @@ A beautiful, interactive frontend. A strong AI-powered backend.
 
 1. Clone this repo:
    ```bash
-   git clone https://github.com/your-username/movie-ai-agent.git
+   git clone https://github.com/gauthiii/movieAgent
    cd movie-ai-agent
    ```
 
 2. Install backend dependencies:
    ```bash
-   cd backend
    npm install
    ```
 
-3. Create `.env` file inside `/backend`:
+3. Create `.env` file inside the root `/`:
    ```
    GEMINI_API_KEY=your_gemini_api_key_here
    ```
@@ -91,7 +90,7 @@ A beautiful, interactive frontend. A strong AI-powered backend.
    npm start
    ```
 
-5. Open `http://localhost:3000` 🎬
+5. Open `http://localhost:3001` 🎬
 
 ---
 
@@ -123,7 +122,7 @@ _(Poster image beautifully displayed here)_
 
 # License
 
-This project is licensed under the MIT License.
+This project is licensed under the BSD 2-Clause License.
 
 ---
 
