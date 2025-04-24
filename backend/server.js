@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {geminiIntro, geminiLeo } from './gemini.js';
+import {geminiIntro, geminiLeo, getMoviePoster } from './gemini.js';
 
 dotenv.config();
 
@@ -57,7 +57,16 @@ app.post('/leo', async (req, res) => {
       }
       const result = await geminiLeo(movieName);
       const cleanedResult = cleanJSON(result);
-      res.json({ movieName: movieName, movieResult: JSON.parse(cleanedResult) });
+
+      const parsed = JSON.parse(cleanedResult);
+
+      // Add poster
+      const posterURL = await getMoviePoster(parsed.title);
+      parsed.url = posterURL;
+  
+      res.json({ movieName: parsed.title, movieResult: parsed });
+
+      // res.json({ movieName: movieName, movieResult: JSON.parse(cleanedResult) });
     } catch (err) {
       console.error('Prediction Error:', err.message);
       res.status(500).json({ error: 'Failed to generate prediction.' });
